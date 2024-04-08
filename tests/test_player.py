@@ -7,8 +7,7 @@ from snapsim3000.player import Player, SnapResult
 
 @pytest.mark.asyncio
 async def test_player_works_with_game():
-    game = Game()
-    game.new_game(decks=1)
+    game = Game(decks=1)
 
     player = Player(name="Test Player")
 

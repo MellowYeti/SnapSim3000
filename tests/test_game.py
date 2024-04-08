@@ -8,13 +8,12 @@ from snapsim3000.player import SnapResult
 
 
 def test_game_setup():
-    game = Game()
-
     test_num_decks = 2
     standard_first_card = Deck().pop(0)
     standard_last_card = Deck().pop()
 
-    game.new_game(decks=test_num_decks)
+    game = Game(decks=test_num_decks)
+
     assert len(game.hand) == test_num_decks * 52
 
     assert game.hand[0] != standard_first_card
@@ -22,9 +21,7 @@ def test_game_setup():
 
 
 def test_game_deal_cards():
-    game = Game()
-
-    game.new_game(decks=1)
+    game = Game(decks=1)
 
     player1 = Mock()
     player2 = Mock()
@@ -40,9 +37,7 @@ def test_game_deal_cards():
 
 @pytest.mark.asyncio
 async def test_game_test_turn():
-    game = Game()
-
-    game.new_game(decks=1)
+    game = Game(decks=1)
 
     test_card = Card(CardFace.SPADES, CardValue.ACE)
 
@@ -64,9 +59,7 @@ async def test_game_test_turn():
 
 
 def test_game_get_scores():
-    game = Game()
-
-    game.new_game(decks=1)
+    game = Game(decks=1)
 
     player1 = Mock()
     player1.name = "Player 1"
