@@ -1,4 +1,7 @@
 from dataclasses import dataclass
+from typing import List
+
+from snapsim3000.deck import Deck
 
 
 @dataclass(frozen=True)
@@ -10,9 +13,9 @@ class SnapResult:
 class Player:
     def __init__(self, name: str):
         self._name = name
-        self._hand = []
+        self._hand: List[Deck] = list()
         self._last_played_card = None
-        self._score = 0
+        self._score: int = 0
 
     @property
     def name(self):

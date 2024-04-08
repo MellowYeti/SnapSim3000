@@ -1,23 +1,25 @@
 import asyncio
 import random
 from itertools import cycle
+from typing import List
 
-from snapsim3000.deck import Deck
+from snapsim3000.deck import Card, Deck
+from snapsim3000.player import Player
 
 
 class Game:
-    def new_game(self, decks):
-        self.hand = []
-        self.pile = []
-        self.discard = []
-        self.players = []
+    def __init__(self, decks: int) -> None:
+        self.hand: List[Card] = list()
+        self.pile: List[Card] = list()
+        self.discard: List[Card] = list()
+        self.players: List[Player] = list()
 
         for _ in range(decks):
             self.hand.extend(Deck())
 
         random.shuffle(self.hand)
 
-    def add_player(self, player):
+    def add_player(self, player: Player):
         self.players.append(player)
 
     def deal_cards(self):
